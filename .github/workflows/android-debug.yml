@@ -22,11 +22,13 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
 
-      - name: Install Gradle
-        run: sudo apt update && sudo apt install -y gradle
+      - name: Fix gradle wrapper
+        run: |
+          gradle wrapper
+          chmod +x gradlew
 
       - name: Build Debug APK
-        run: gradle assembleDebug
+        run: ./gradlew :app:assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
