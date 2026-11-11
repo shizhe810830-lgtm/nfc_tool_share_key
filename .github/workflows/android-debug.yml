@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: android-nfc-app  # 关键：进入安卓项目文件夹执行
 
     steps:
       - name: Checkout code
